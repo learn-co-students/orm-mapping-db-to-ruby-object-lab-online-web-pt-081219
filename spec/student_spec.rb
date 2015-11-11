@@ -57,4 +57,27 @@ describe Student do
       expect(DB[:conn].execute("SELECT * FROM students")).to eq([[1, nil, nil]])
     end
   end
+
+  describe '.new_from_db' do
+    it 'creates an instance with corresponding attribute values' do
+      row = [1, "Pat", 12]
+      pat = Student.new_from_db(row)
+
+      expect(pat.id).to eq(row[0])
+      expect(pat.name).to eq(row[1])
+      expect(pat.grade).to eq(row[2])
+    end
+  end
+
+  describe '.find_by_name' do
+    it 'returns an instance of student that matches the name from the DB' do
+      pat.name = "Pat"
+      pat.grade = 12
+      pat.save
+
+      pat_from_db = Student.find_by_name("Pat")
+      expect(pat_from_db.name).to eq("Pat")
+      expect(pat_from_db).to be_an_instance_of(Student)
+    end
+  end
 end
