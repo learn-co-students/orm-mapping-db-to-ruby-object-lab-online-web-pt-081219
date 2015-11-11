@@ -11,6 +11,7 @@ describe Student do
   end
 
   let(:pat) {Student.new}
+  let(:sam) {Student.new}
   let(:attributes) {
     {
       :id => 1,
@@ -69,15 +70,35 @@ describe Student do
     end
   end
 
-  describe '.find_by_name' do
-    it 'returns an instance of student that matches the name from the DB' do
-      pat.name = "Pat"
-      pat.grade = 12
-      pat.save
+  context 'retrieving data from the db' do 
+    describe '.find_by_name' do
 
-      pat_from_db = Student.find_by_name("Pat")
-      expect(pat_from_db.name).to eq("Pat")
-      expect(pat_from_db).to be_an_instance_of(Student)
+      it 'returns an instance of student that matches the name from the DB' do
+        pat.name = "Pat"
+        pat.grade = 12
+        pat.save
+
+        pat_from_db = Student.find_by_name("Pat")
+        expect(pat_from_db.name).to eq("Pat")
+        expect(pat_from_db).to be_an_instance_of(Student)
+      end
+    end
+
+    describe '.all' do 
+      it 'returns all student instances from the db' do 
+        pat.name = "Pat"
+        pat.grade = 12
+        pat.save
+        sam.name = "Sam"
+        sam.grade = 10
+        sam.save
+
+        all_from_db = Student.all 
+        expect(all_from_db.size).to eq(2)
+        expect(all_from_db.last).to be_an_instance_of(Student)
+        expect(all_from_db.last.name).to eq("Sam")         
+      end
     end
   end
+  
 end
