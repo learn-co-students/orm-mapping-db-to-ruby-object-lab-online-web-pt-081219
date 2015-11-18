@@ -70,7 +70,7 @@ describe Student do
     end
   end
 
-  context 'retrieving data from the db' do 
+  describe 'retrieving data from the db' do 
     describe '.find_by_name' do
 
       it 'returns an instance of student that matches the name from the DB' do
