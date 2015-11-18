@@ -70,7 +70,7 @@ describe Student do
     end
   end
 
-  context 'retrieving data from the db' do 
+  describe 'retrieving data from the db' do 
     describe '.find_by_name' do
 
       it 'returns an instance of student that matches the name from the DB' do
@@ -96,7 +96,7 @@ describe Student do
         all_from_db = Student.all 
         expect(all_from_db.size).to eq(2)
         expect(all_from_db.last).to be_an_instance_of(Student)
-        expect(all_from_db.last.name).to eq("Sam")         
+        expect(all_from_db.any? {|student| student.name == "Sam"}.to eq(true)         
       end
     end
   end
