@@ -53,3 +53,5 @@ Again, you will use the `.new_from_db` method to create an student instance for 
 
 
 
+
+<a href='https://learn.co/lessons/orm-mapping-db-to-ruby-object-lab' data-visibility='hidden'>View this lesson on Learn.co</a>
