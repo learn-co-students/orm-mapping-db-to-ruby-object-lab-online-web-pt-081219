@@ -113,29 +113,6 @@ describe Student do
       end
     end
 
-    describe '.first_student_in_grade_12' do
-      it 'returns the first student in grade 12' do
-        pat.name = "Pat"
-        pat.grade = 12
-        pat.id = 1
-        pat.save
-
-        sam.name = "Sam"
-        sam.grade = 10
-        sam.id = 2
-        sam.save
-
-        jess.name = "Jess"
-        jess.grade = 10
-        jess.id = 3
-        jess.save
-
-        first_student = Student.first_student_in_grade_10
-        expect(first_student.id).to eq(2)
-        expect(first_student.name).to eq("Sam")
-      end
-    end
-
     describe '.all' do 
       it 'returns all student instances from the db' do 
         pat.name = "Pat"
