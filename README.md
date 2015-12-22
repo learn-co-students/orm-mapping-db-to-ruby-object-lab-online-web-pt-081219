@@ -46,9 +46,17 @@ This is a class method that is very similar to the `.find_by_name` method. You w
 
 Again, you will use the `.new_from_db` method to create an student instance for each row that comes back from the database. 
 
+### The `.cound_all_students_in_grade_9` Method
 
+This is a class method that does not need an argument. This method should return an array of all the students in grade 9.
 
+### The `.students_below_12th_grade` Method
 
+This is a class method that does not need an argument. This method should return an array of all the students below 12th grade.
+
+### The `.first_student_in_grade_10`
+
+This is a class method that does not need an argument. This student should return the first student that is in grade 10.
 
 
 
