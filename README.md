@@ -62,4 +62,4 @@ This is a class method that does not need an argument. This student should retur
 
 
 
-<a href='https://learn.co/lessons/orm-mapping-db-to-ruby-object-lab' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/orm-mapping-db-to-ruby-object-lab' title='ORM Mapping Database Rows to Ruby Objects'>ORM Mapping Database Rows to Ruby Objects</a> on Learn.co and start learning to code for free.</p>
