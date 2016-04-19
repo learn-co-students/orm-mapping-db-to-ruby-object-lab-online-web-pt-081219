@@ -21,7 +21,7 @@ describe Student do
     }
   }
 
-  describe 'attributes' do 
+  describe 'attributes' do
     it 'has an id, name, grade' do
       pat.id = attributes[:id]
       pat.name = attributes[:name]
@@ -53,8 +53,8 @@ describe Student do
     end
   end
 
-  describe "#save" do 
-    it 'saves an instance of the Student class to the database' do 
+  describe "#save" do
+    it 'saves an instance of the Student class to the database' do
       pat.save
       expect(DB[:conn].execute("SELECT * FROM students")).to eq([[1, nil, nil]])
     end
@@ -71,7 +71,7 @@ describe Student do
     end
   end
 
-  describe 'retrieving data from the db' do 
+  describe 'retrieving data from the db' do
     describe '.find_by_name' do
 
       it 'returns an instance of student that matches the name from the DB' do
@@ -113,8 +113,8 @@ describe Student do
       end
     end
 
-    describe '.all' do 
-      it 'returns all student instances from the db' do 
+    describe '.all' do
+      it 'returns all student instances from the db' do
         pat.name = "Pat"
         pat.grade = 12
         pat.save
@@ -122,24 +122,28 @@ describe Student do
         sam.grade = 10
         sam.save
 
-        all_from_db = Student.all 
+        all_from_db = Student.all
         expect(all_from_db.size).to eq(2)
         expect(all_from_db.last).to be_an_instance_of(Student)
-        expect(all_from_db.any? {|student| student.name == "Sam"}).to eq(true)         
+        expect(all_from_db.any? {|student| student.name == "Sam"}).to eq(true)
       end
     end
-  
-    describe '.students_below_12th_grade' do
-      it 'returns an array of all students in grades 11 or below' do
+
+    describe '.first_X_students_in_grade_10' do
+      it 'returns an array of the first X students in grade 10' do
+
         pat.name = "Pat"
-        pat.grade = 12
+        pat.grade = 10
         pat.save
         sam.name = "Sam"
         sam.grade = 10
         sam.save
+        jess.name = "Jess"
+        jess.grade = 10
+        jess.save
 
-        all_but_12th = Student.students_below_12th_grade
-        expect(all_but_12th.size).to eq(1)
+        first_x_students = Student.first_x_students_in_grade_10(2)
+        expect(first_x_students.size).to eq(2)
       end
     end
 
@@ -166,17 +170,20 @@ describe Student do
       end
     end
 
-    describe '.count_all_students_in_grade_9' do
-      it 'returns an array of all students in grades 9' do
+    describe '.all_students_in_grade_X' do
+      it 'returns an array of all students in a given grade X' do
         pat.name = "Pat"
-        pat.grade = 12
+        pat.grade = 10
         pat.save
         sam.name = "Sam"
-        sam.grade = 9
+        sam.grade = 10
         sam.save
+        jess.name = "Jess"
+        jess.grade = 10
+        jess.save
 
-        all_in_9 = Student.count_all_students_in_grade_9
-        expect(all_in_9.size).to eq(1)
+        tenth_grade = Student.all_students_in_grade_X(10)
+        expect(tenth_grade.size).to eq(3)
       end
     end
   end
