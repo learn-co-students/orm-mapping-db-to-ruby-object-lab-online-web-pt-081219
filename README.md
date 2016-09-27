@@ -66,11 +66,4 @@ This is a class method that does not need an argument. This should return the fi
 
 This is a class method that takes in an argument of grade for which to retrieve the roster. This method should return an array of all students for grade `X`.
 
-
-
-
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/orm-mapping-db-to-ruby-object-lab' title='ORM Mapping Database Rows to Ruby Objects'>ORM Mapping Database Rows to Ruby Objects</a> on Learn.co and start learning to code for free.</p>
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/orm-mapping-db-to-ruby-object-lab'>Mapping Database Rows to Objects Lab</a> on Learn.co and start learning to code for free.</p>
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/orm-mapping-db-to-ruby-object-lab'>Mapping Database Rows to Objects Lab</a> on Learn.co and start learning to code for free.</p>
