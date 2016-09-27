@@ -7,7 +7,7 @@
 
 ## Overview
 
-We are going to continue building out the `Student` class of our app. We are in the middle of building an app to help a public school's adminstrators keep track of their students. In this app we have a `Student` class. Each individual students has two attributes, a `name` and a `grade`, i.e. 9th, 10th, 11th, etc. 
+We are going to continue building out the `Student` class of our app. We are in the middle of building an app to help a public school's adminstrators keep track of their students. In this app we have a `Student` class. Each individual student has two attributes, a `name` and a `grade`, i.e. 9th, 10th, 11th, etc. 
 
 Our administrators need to save the student objects that this class produces to a database. We've set up the database for you in the `config/environment.rb` file. 
 
@@ -72,3 +72,5 @@ This is a class method that takes in an argument of grade for which to retrieve 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/orm-mapping-db-to-ruby-object-lab' title='ORM Mapping Database Rows to Ruby Objects'>ORM Mapping Database Rows to Ruby Objects</a> on Learn.co and start learning to code for free.</p>
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/orm-mapping-db-to-ruby-object-lab'>Mapping Database Rows to Objects Lab</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/orm-mapping-db-to-ruby-object-lab'>Mapping Database Rows to Objects Lab</a> on Learn.co and start learning to code for free.</p>
