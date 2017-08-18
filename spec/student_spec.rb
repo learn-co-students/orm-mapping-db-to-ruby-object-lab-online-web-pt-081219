@@ -129,7 +129,7 @@ describe Student do
       end
     end
 
-    describe '.first_x_students_in_grade_10' do
+    describe '.first_X_students_in_grade_10' do
       it 'returns an array of the first X students in grade 10' do
 
         pat.name = "Pat"
@@ -142,8 +142,8 @@ describe Student do
         jess.grade = 10
         jess.save
 
-        first_x_students = Student.first_x_students_in_grade_10(2)
-        expect(first_x_students.size).to eq(2)
+        first_X_students = Student.first_X_students_in_grade_10(2)
+        expect(first_X_students.size).to eq(2)
       end
     end
 
@@ -170,7 +170,7 @@ describe Student do
       end
     end
 
-    describe '.all_students_in_grade_x' do
+    describe '.all_students_in_grade_X' do
       it 'returns an array of all students in a given grade X' do
         pat.name = "Pat"
         pat.grade = 10
@@ -182,7 +182,7 @@ describe Student do
         jess.grade = 10
         jess.save
 
-        tenth_grade = Student.all_students_in_grade_x(10)
+        tenth_grade = Student.all_students_in_grade_X(10)
         expect(tenth_grade.size).to eq(3)
       end
     end
