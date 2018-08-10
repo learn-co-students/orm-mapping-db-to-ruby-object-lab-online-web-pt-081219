@@ -33,7 +33,7 @@ Let's get started!
 
 ### The `.new_from_db` Method
 
-This is a class method that accepts a row from the database as an argument. It then creates a new student object based on the information in the row. Remember, our database doesn't store Ruby objects, so we have to manually convert it ourself.
+This is a class method that accepts a row from the database as an argument. It then creates a new student object based on the information in the row. Remember, our database doesn't store Ruby objects, so we have to manually convert it ourselves.
 
 ### The `.find_by_name` Method
 This is a class method that accepts a name of a student. You will first run a SQL query to get the result from the database where the student's name matches the name passed into the argument.
