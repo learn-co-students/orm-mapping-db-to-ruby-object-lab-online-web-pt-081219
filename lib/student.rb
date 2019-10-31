@@ -1,3 +1,5 @@
+require 'pry'
+
 class Student
   attr_accessor :id, :name, :grade
 
@@ -79,12 +81,15 @@ class Student
   end
   
   def self.students_below_12th_grade
+    student_list
     sql = <<~SQL
-      SELECT * FROM students WHERE grade = ?
+      SELECT * 
+      FROM students 
+      WHERE grade NOT LIKE '%12%'
     SQL
     
-    DB[:conn].execute(sql).map do |row|
-      self.new_from_db(row)
+    DB[:conn].execute(sql).map do |name|
+      student_list << name
     end
   end
   
@@ -94,21 +99,19 @@ class Student
     DB[:conn].execute("SELECT name FROM students WHERE grade = 10 LIMIT #{x}").map do |name|
       student_list << name
     end
-    student_list
   end
   
   def self.first_student_in_grade_10
     grade_10 = []
     sql = <<~SQL
-      SELECT name 
+      SELECT * 
       FROM students 
       WHERE grade = ?
-      LIMIT 1
     SQL
     
     DB[:conn].execute(sql, 10).map do |name|
       grade_10 << name
-    end
+    end.first
   end
   
   def self.all_students_in_grade_X(target_grade)
