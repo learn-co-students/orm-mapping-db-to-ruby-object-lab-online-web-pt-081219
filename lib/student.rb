@@ -79,23 +79,47 @@ class Student
   end
   
   def self.students_below_12th_grade
-    grade_9_10_11 = []
     sql = <<~SQL
-      SELECT *
-      FROM students
-      EXCEPT WHERE grade = 12
+      SELECT * FROM students WHERE grade = ?
     SQL
     
-    DB[:conn].execute(sql).map do |stdnt|
-      grade_9_10_11 << stdnt[1]
+    DB[:conn].execute(sql).map do |row|
+      self.new_from_db(row)
     end
   end
   
-  def self.first_X_students_in_grade_10(x)
+  def self.first_X_students_in_grade_10(number)
     student_list = []
-        sql = " SELECT name FROM students WHERE grade = ? LIMIT #{x.to_i}"
+    x = number.to_i
+    DB[:conn].execute("SELECT name FROM students WHERE grade = 10 LIMIT #{x}").map do |name|
+      student_list << name
+    end
+    student_list
+  end
+  
+  def self.first_student_in_grade_10
+    grade_10 = []
+    sql = <<~SQL
+      SELECT name 
+      FROM students 
+      WHERE grade = ?
+      ORDER BY id
+    SQL
     
-    DB[:conn].execute(sql, 10).map do |name|
+    DB[:conn].execute(sql, 9).map do |name|
+      grade_10 << name
+    end.first
+  end
+  
+  def self.all_students_in_grade_X(target_grade)
+    student_list = []
+    sql = <<~SQL
+      SELECT name 
+      FROM students 
+      WHERE grade = ?
+    SQL
+    
+    DB[:conn].execute(sql, target_grade).map do |name|
       student_list << name
     end
   end
