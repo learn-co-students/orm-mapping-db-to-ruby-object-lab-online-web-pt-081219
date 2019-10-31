@@ -81,37 +81,29 @@ class Student
   end
   
   def self.students_below_12th_grade
-    student_list
+    student_list = []
     sql = <<~SQL
-      SELECT * 
-      FROM students 
-      WHERE grade NOT LIKE '%12%'
+      SELECT * FROM students WHERE grade < 12
     SQL
     
-    DB[:conn].execute(sql).map do |name|
-      student_list << name
+    DB[:conn].execute(sql).map do |row|
+      self.new_from_db(row)
     end
   end
   
   def self.first_X_students_in_grade_10(number)
-    student_list = []
     x = number.to_i
-    DB[:conn].execute("SELECT name FROM students WHERE grade = 10 LIMIT #{x}").map do |name|
-      student_list << name
+    sql = <<~SQL
+      SELECT * FROM students WHERE grade = 10 LIMIT ?
+    SQL
+    
+    DB[:conn].execute(sql, x).map do |row|
+      self.new_from_db(row)
     end
   end
   
   def self.first_student_in_grade_10
-    grade_10 = []
-    sql = <<~SQL
-      SELECT * 
-      FROM students 
-      WHERE grade = ?
-    SQL
-    
-    DB[:conn].execute(sql, 10).map do |name|
-      grade_10 << name
-    end.first
+    self.first_X_students_in_grade_10(1).first
   end
   
   def self.all_students_in_grade_X(target_grade)
