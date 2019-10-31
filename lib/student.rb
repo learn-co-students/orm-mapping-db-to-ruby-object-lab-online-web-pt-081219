@@ -103,12 +103,12 @@ class Student
       SELECT name 
       FROM students 
       WHERE grade = ?
-      ORDER BY id
+      LIMIT 1
     SQL
     
-    DB[:conn].execute(sql, 9).map do |name|
+    DB[:conn].execute(sql, 10).map do |name|
       grade_10 << name
-    end.first
+    end
   end
   
   def self.all_students_in_grade_X(target_grade)
